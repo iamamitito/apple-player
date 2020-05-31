@@ -75,7 +75,6 @@ function setProgress(e) {
 
 function setVolume() {
     audio.volume = volume.value / 100;
-
 }
 
 
@@ -102,6 +101,8 @@ audio.addEventListener('loadedmetadata', () => {
         secs = '0' + String(secs);
     }
     durationstamp.innerText = `${mins}:${secs}`;
+    updateProgress();
+
 });
 
 
