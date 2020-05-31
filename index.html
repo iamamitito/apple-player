@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <title>Chromatica</title>
+</head>
+
+<body>
+    <div class="music-container" id="music-container">
+        <div class="top-line"></div>
+        <div class="image-container">
+            <img src="/images/chromatica.jpg" alt="cover" />
+        </div>
+        <div class="music-info">
+            <h4 class="title" id="title"></h4>
+            <h4 class="artist">Lady Gaga</h4>
+        </div>
+        <div class="progress-container" id="progress-container">
+            <div class="progress" id="progress"><span class="dot"></span>
+            </div>
+            <span class="timestamp" id="timestamp">0:00</span>
+        </div>
+        <audio src="" id="audio"></audio>
+        <div class="navigation">
+            <button id="prev" class="action-btn">
+                <i class="fas fa-backward"></i>
+            </button>
+            <button id="play" class="action-btn">
+                <i class="fas fa-play"></i>
+            </button>
+            <button id="next" class="action-btn">
+                <i class="fas fa-forward"></i>
+            </button>
+        </div>
+        <div class="volume-section">
+            <i class="fas fa-volume-off"></i>
+            <div class="volume-container">
+                <div class="volume" id="volume"><span class="dot"></span>
+                </div>
+            </div>
+            <i class="fas fa-volume-up"></i>
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

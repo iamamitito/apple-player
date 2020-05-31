@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  width: fit-content;
+  margin: auto;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #ff437263;
+}
+.top-line {
+  height: 5px;
+  background-color: #565658;
+  width: 35px;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.music-container {
+  background-color: #1c1c1e;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 35px 30px;
+  margin: 0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.image-container {
+  padding: 20px 25px;
+}
+.image-container img {
+  height: 260px;
+  width: 260px;
+  transition: transform 0.3s ease-in-out;
+  border-radius: 5px;
+  border: 0.1px solid rgba(128, 128, 128, 0.1);
+  margin-top: 20px;
+}
+.music-container.play .image-container img {
+  transform: scale(1.2);
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.music-info {
+  padding: 20px 0;
+}
+.music-info .title {
+  color: #fff;
+  font-weight: 400;
+  padding-top: 30px;
+}
+.music-info .artist {
+  font-weight: 300;
+  color: #ff4371;
+}
+.music-info h4 {
+  margin: 2px 0;
+}
+
+.progress-container {
+  background: #565658;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 2px;
+  width: 100%;
+}
+.progress,
+.volume {
+  background-color: #717174;
+  border-radius: 5px;
+  height: 100%;
+  width: 0%;
+  position: relative;
+  transition: with 0.1s linear;
+}
+.progress .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 20px;
+  background: #717174;
+  position: absolute;
+  right: 0;
+  top: -1px;
+}
+.progress-container .timestamp {
+  font-size: 11px;
+  color: #717174;
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+.action-btn {
+  background-color: #1c1c1e;
+  border: 0;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 3px;
+  margin: 4px 20px;
+}
+.action-btn:focus {
+  outline: 0;
+}
+.volume-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  color: #565658;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.volume-container {
+  background: #565658;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  height: 2px;
+  width: 80%;
+}
+.volume .dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 20px;
+  background: #ffffff;
+  position: absolute;
+  right: 0;
+  top: -6px;
+}
