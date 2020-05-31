@@ -10,7 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #ff437263;
+  background-color: #ff43c063;
 }
 .top-line {
   height: 5px;
@@ -126,6 +126,9 @@ body {
   font-size: 12px;
   margin-top: 10px;
 }
+.volume-section i {
+  padding-top: 8px;
+}
 .volume-container input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
@@ -136,7 +139,7 @@ body {
 }
 .volume {
   -webkit-appearance: none;
-  width: 250px;
+  width: 260px;
   height: 2px;
   background-color: #565658;
 }
