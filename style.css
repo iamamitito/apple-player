@@ -70,14 +70,15 @@ body {
   height: 2px;
   width: 100%;
 }
-.progress,
-.volume {
+.progress {
   background-color: #717174;
   border-radius: 5px;
   height: 100%;
   width: 0%;
   position: relative;
   transition: with 0.1s linear;
+}
+.volume {
 }
 .progress .dot {
   width: 5px;
@@ -88,9 +89,15 @@ body {
   right: 0;
   top: -1px;
 }
-.progress-container .timestamp {
+.progress-container .timestamp,
+.duration {
   font-size: 11px;
   color: #717174;
+  margin-top: 2px;
+}
+.time-container {
+  display: flex;
+  justify-content: space-between;
 }
 .navigation {
   display: flex;
@@ -119,20 +126,20 @@ body {
   font-size: 12px;
   margin-top: 10px;
 }
-.volume-container {
-  background: #565658;
-  border-radius: 5px;
-  cursor: pointer;
-  margin: 10px 0;
-  height: 2px;
-  width: 80%;
+.volume-container input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #fff;
 }
-.volume .dot {
-  width: 15px;
-  height: 15px;
-  border-radius: 20px;
-  background: #ffffff;
-  position: absolute;
-  right: 0;
-  top: -6px;
+.volume {
+  -webkit-appearance: none;
+  width: 250px;
+  height: 2px;
+  background-color: #565658;
+}
+.volume:focus {
+  outline: 0;
 }

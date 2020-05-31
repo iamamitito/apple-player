@@ -23,9 +23,14 @@
         <div class="progress-container" id="progress-container">
             <div class="progress" id="progress"><span class="dot"></span>
             </div>
-            <span class="timestamp" id="timestamp">0:00</span>
+            <div class="time-container">
+                <span class="timestamp" id="timestamp"></span>
+                <span class="duration" id="duration"></span>
+            </div>
+
+
         </div>
-        <audio src="" id="audio"></audio>
+        <audio src="" id="audio" preload="metadata"></audio>
         <div class="navigation">
             <button id="prev" class="action-btn">
                 <i class="fas fa-backward"></i>
@@ -40,8 +45,7 @@
         <div class="volume-section">
             <i class="fas fa-volume-off"></i>
             <div class="volume-container">
-                <div class="volume" id="volume"><span class="dot"></span>
-                </div>
+                <input class="volume" id="volume" type="range" min="0" max="100" value="100" step="1">
             </div>
             <i class="fas fa-volume-up"></i>
         </div>
