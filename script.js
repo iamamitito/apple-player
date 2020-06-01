@@ -16,6 +16,7 @@ const title = document.getElementById('title');
 
 loadSong('babylon');
 
+
 function loadSong(song) {
     title.innerText = song.substring(0, 1).toUpperCase() + song.substring(1).toLowerCase();
     audio.src = `music/${song}.mp3`;
@@ -76,6 +77,7 @@ function setProgress(e) {
 function setVolume() {
     audio.volume = volume.value / 100;
 }
+
 
 
 // Event Listeners
