@@ -1,16 +1,23 @@
-const musicContainer = document.getElementById('music-container');
+
+//Buttons 
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const lyricsBtn = document.getElementById('lyrics-btn');
-const audio = document.getElementById('audio-1');
-const progress = document.getElementById('progress');
+
+// Containers
+const musicContainer = document.getElementById('music-container');
 const progressContainer = document.getElementById('progress-container');
+const lyricsContainer = document.querySelector('.lyrics-container');
+
+// DOM elements
 const timestamp = document.getElementById('timestamp');
 const durationstamp = document.getElementById('duration');
+const audio = document.getElementById('audio-1');
+const progress = document.getElementById('progress');
 const volume = document.getElementById('volume');
-const lyricsContainer = document.querySelector('.lyrics-container');
 const title = document.getElementById('title');
+
 
 /*
 let songs = ['enigma', 'babylon'];
