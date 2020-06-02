@@ -20,6 +20,10 @@ const title = document.getElementById('title');
 
 
 /*
+
+// Previus version displayed lyrics from json file
+// Current version displays lyrics using Rabbit Lyrics synchronizer
+
 let songs = ['enigma', 'babylon'];
 
 // Keep track of song
