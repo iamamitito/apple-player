@@ -3,41 +3,24 @@ const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const lyricsBtn = document.getElementById('lyrics-btn');
-const audio = document.getElementById('audio');
+const audio = document.getElementById('audio-1');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
 const timestamp = document.getElementById('timestamp');
 const durationstamp = document.getElementById('duration');
 const volume = document.getElementById('volume');
-const lyricsContainer = document.getElementById('lyrics-container');
+const lyricsContainer = document.querySelector('.lyrics-container');
 const title = document.getElementById('title');
 
 
-let songs = ['enigma', 'babylon'];
-
-// Keep track of song
-let songIndex = 0;
 
 // Initially load song details into UI
-loadSong(songs[songIndex]);
+loadSong('enigma');
 
 
 function loadSong(song) {
     title.innerText = song.substring(0, 1).toUpperCase() + song.substring(1).toLowerCase();
     audio.src = `music/${song}.mp3`;
-    getLyrics();
-}
-
-async function getLyrics() {
-    const res = await fetch('lyrics.json');
-    const data = await res.json();
-    let lyrics = data;
-
-    // updating UI with the lyrics
-    lyricsContainer.innerHTML = `
-    <h3>${lyrics[songIndex].title.substring(0, 1).toUpperCase() + lyrics[songIndex].title.substring(1).toLowerCase()}</h3>
-    <span>${lyrics[songIndex].lyrics.replace(/(\n)/g, '<br>')}</span>
-    `
 }
 
 function playSong() {
@@ -50,22 +33,18 @@ function pauseSong() {
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
     audio.pause();
 }
-// previous and next songs
-function prevSong() {
-    songIndex--;
-    if (songIndex < 0) {
-        songIndex = songs.length - 1;
-    }
-    loadSong(songs[songIndex]);
+
+
+function restartSong() {
+    audio.pause();
+    audio.currentTime = 0;
     playSong();
 }
-function nextSong() {
-    songIndex++;
-    if (songIndex > songs.length - 1) {
-        songIndex = 0;
-    }
-    loadSong(songs[songIndex]);
-    playSong();
+function stopSong() {
+    audio.pause();
+    audio.currentTime = 0;
+    musicContainer.classList.remove('play');
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
 
 // Update progress bar
@@ -145,14 +124,14 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 // previous and next botton restart the song (for now)
-prevBtn.addEventListener('click', prevSong);
-nextBtn.addEventListener('click', nextSong);
+prevBtn.addEventListener('click', restartSong);
+nextBtn.addEventListener('click', restartSong);
 
 //  Displays the lyrics
 lyricsBtn.addEventListener('click', toggleLyrics);
 
 
 // after song is finished 
-audio.addEventListener('ended', nextSong);
+audio.addEventListener('ended', stopSong);
 
 volume.addEventListener('change', setVolume);
