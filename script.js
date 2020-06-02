@@ -14,15 +14,6 @@ const title = document.getElementById('title');
 
 
 
-// Initially load song details into UI
-loadSong('enigma');
-
-
-function loadSong(song) {
-    title.innerText = song.substring(0, 1).toUpperCase() + song.substring(1).toLowerCase();
-    audio.src = `music/${song}.mp3`;
-}
-
 function playSong() {
     musicContainer.classList.add('play');
     playBtn.innerHTML = '<i class="fas fa-pause"></i>';
