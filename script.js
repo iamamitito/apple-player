@@ -37,6 +37,9 @@ function stopSong() {
     audio.currentTime = 0;
     musicContainer.classList.remove('play');
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    lyricsContainer.classList.remove('visible');
+    lyricsBtn.style.color = '#ff4371';
+    lyricsBtn.style.borderColor = '#ff4371';
 }
 
 // Update progress bar
