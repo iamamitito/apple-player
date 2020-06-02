@@ -10,7 +10,7 @@ const musicContainer = document.getElementById('music-container');
 const progressContainer = document.getElementById('progress-container');
 const lyricsContainer = document.querySelector('.lyrics-container');
 
-// DOM elements
+// Elements
 const timestamp = document.getElementById('timestamp');
 const durationstamp = document.getElementById('duration');
 const audio = document.getElementById('audio-1');
@@ -81,9 +81,10 @@ function stopSong() {
     lyricsBtn.style.borderColor = '#ff4371';
 }
 
+
 /*
 
-// previous and next songs
+// Previous and next songs
 function prevSong() {
     songIndex--;
     if (songIndex < 0) {
@@ -122,6 +123,7 @@ function updateProgress(e) {
     timestamp.innerText = `${mins}:${secs}`;
 
 }
+
 // Set progress bar 
 function setProgress(e) {
     const width = this.clientWidth;
@@ -182,6 +184,12 @@ progressContainer.addEventListener('click', setProgress);
 // Previous and next botton restart the song 
 prevBtn.addEventListener('click', restartSong);
 nextBtn.addEventListener('click', restartSong);
+
+/*
+Previous version
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+*/
 
 //  Displays the lyrics
 lyricsBtn.addEventListener('click', toggleLyrics);
