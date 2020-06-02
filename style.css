@@ -25,7 +25,7 @@ body {
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding: 20px 30px 20px 30px;
+  padding: 15px 30px 10px 30px;
   margin: 0;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
@@ -39,7 +39,7 @@ body {
   transition: transform 0.3s ease-in-out;
   border-radius: 5px;
   border: 0.1px solid rgba(128, 128, 128, 0.1);
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .music-container.play .image-container img {
   transform: scale(1.2);
@@ -122,7 +122,6 @@ body {
   width: 100%;
   color: #565658;
   font-size: 12px;
-  margin-top: 10px;
 }
 .volume-section i {
   padding-top: 8px;
@@ -144,10 +143,46 @@ body {
 .volume:focus {
   outline: 0;
 }
+.lyrics-container {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: #1c1c1e91;
+  height: 360px;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  line-height: 30px;
+  color: rgb(212, 212, 212);
+  text-align: center;
+  display: none;
+}
+.lyrics-container h3 {
+  margin: 20px 0;
+  font-weight: 300;
+  color: #ff4371;
+}
+.lyrics-btn {
+  font-size: 8px;
+  border: 1.5px solid #ff4371;
+  padding: 3px 5px;
+  border-radius: 5px;
+  color: #ff4371;
+  cursor: pointer;
+  margin: 30px 0 0 0;
+  width: fit-content;
+  align-self: center;
+  margin-bottom: 20px;
+}
+.lyrics-container.visible {
+  display: block;
+}
+
 .copyright {
   font-size: 10px;
   bottom: 0;
   text-align: center;
-  padding: 30px 0 0 0;
+  padding: 0;
   color: #565658;
 }

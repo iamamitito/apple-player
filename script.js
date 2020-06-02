@@ -2,27 +2,43 @@ const musicContainer = document.getElementById('music-container');
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-
+const lyricsBtn = document.getElementById('lyrics-btn');
 const audio = document.getElementById('audio');
 const progress = document.getElementById('progress');
 const progressContainer = document.getElementById('progress-container');
 const timestamp = document.getElementById('timestamp');
 const durationstamp = document.getElementById('duration');
 const volume = document.getElementById('volume');
-
+const lyricsContainer = document.getElementById('lyrics-container');
 const title = document.getElementById('title');
 
 
+let songs = ['enigma', 'babylon'];
 
-loadSong('babylon');
+// Keep track of song
+let songIndex = 0;
+
+// Initially load song details into UI
+loadSong(songs[songIndex]);
 
 
 function loadSong(song) {
     title.innerText = song.substring(0, 1).toUpperCase() + song.substring(1).toLowerCase();
     audio.src = `music/${song}.mp3`;
+    getLyrics();
 }
 
+async function getLyrics() {
+    const res = await fetch('lyrics.json');
+    const data = await res.json();
+    let lyrics = data;
 
+    // updating UI with the lyrics
+    lyricsContainer.innerHTML = `
+    <h3>${lyrics[songIndex].title.substring(0, 1).toUpperCase() + lyrics[songIndex].title.substring(1).toLowerCase()}</h3>
+    <span>${lyrics[songIndex].lyrics.replace(/(\n)/g, '<br>')}</span>
+    `
+}
 
 function playSong() {
     musicContainer.classList.add('play');
@@ -34,17 +50,22 @@ function pauseSong() {
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
     audio.pause();
 }
-
-function restartSong() {
-    audio.pause();
-    audio.currentTime = 0;
+// previous and next songs
+function prevSong() {
+    songIndex--;
+    if (songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    loadSong(songs[songIndex]);
     playSong();
 }
-function stopSong() {
-    audio.pause();
-    audio.currentTime = 0;
-    musicContainer.classList.remove('play');
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+function nextSong() {
+    songIndex++;
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
 }
 
 // Update progress bar
@@ -78,6 +99,17 @@ function setVolume() {
     audio.volume = volume.value / 100;
 }
 
+function toggleLyrics() {
+    lyricsContainer.classList.toggle('visible');
+    if (lyricsContainer.classList.contains('visible')) {
+        lyricsBtn.style.color = '#fff';
+        lyricsBtn.style.borderColor = '#fff';
+    } else {
+        lyricsBtn.style.color = '#ff4371';
+        lyricsBtn.style.borderColor = '#ff4371';
+    }
+}
+
 
 
 // Event Listeners
@@ -103,10 +135,8 @@ audio.addEventListener('loadedmetadata', () => {
         secs = '0' + String(secs);
     }
     durationstamp.innerText = `${mins}:${secs}`;
-    updateProgress();
 
 });
-
 
 // Update song time
 audio.addEventListener('timeupdate', updateProgress);
@@ -115,10 +145,14 @@ audio.addEventListener('timeupdate', updateProgress);
 progressContainer.addEventListener('click', setProgress);
 
 // previous and next botton restart the song (for now)
-prevBtn.addEventListener('click', restartSong);
-nextBtn.addEventListener('click', restartSong);
+prevBtn.addEventListener('click', prevSong);
+nextBtn.addEventListener('click', nextSong);
+
+//  Displays the lyrics
+lyricsBtn.addEventListener('click', toggleLyrics);
+
 
 // after song is finished 
-audio.addEventListener('ended', stopSong);
+audio.addEventListener('ended', nextSong);
 
 volume.addEventListener('change', setVolume);
