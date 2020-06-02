@@ -31,6 +31,7 @@ function restartSong() {
     audio.currentTime = 0;
     playSong();
 }
+
 function stopSong() {
     audio.pause();
     audio.currentTime = 0;
@@ -111,10 +112,10 @@ audio.addEventListener('loadedmetadata', () => {
 // Update song time
 audio.addEventListener('timeupdate', updateProgress);
 
-// Click on progress bar
+// When visitor clicks on progress bar at a certain time
 progressContainer.addEventListener('click', setProgress);
 
-// previous and next botton restart the song (for now)
+// Previous and next botton restart the song 
 prevBtn.addEventListener('click', restartSong);
 nextBtn.addEventListener('click', restartSong);
 
@@ -122,7 +123,7 @@ nextBtn.addEventListener('click', restartSong);
 lyricsBtn.addEventListener('click', toggleLyrics);
 
 
-// after song is finished 
+// After song is finished 
 audio.addEventListener('ended', stopSong);
 
 volume.addEventListener('change', setVolume);
