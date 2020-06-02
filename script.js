@@ -12,6 +12,35 @@ const volume = document.getElementById('volume');
 const lyricsContainer = document.querySelector('.lyrics-container');
 const title = document.getElementById('title');
 
+/*
+let songs = ['enigma', 'babylon'];
+
+// Keep track of song
+let songIndex = 0;
+
+// Initially load song details into UI
+loadSong(songs[songIndex]);
+
+
+function loadSong(song) {
+    title.innerText = song.substring(0, 1).toUpperCase() + song.substring(1).toLowerCase();
+    audio.src = `music/${song}.mp3`;
+    getLyrics();
+}
+
+async function getLyrics() {
+    const res = await fetch('lyrics.json');
+    const data = await res.json();
+    let lyrics = data;
+
+    // updating UI with the lyrics
+    lyricsContainer.innerHTML = `
+    <h3>${lyrics[songIndex].title.substring(0, 1).toUpperCase() + lyrics[songIndex].title.substring(1).toLowerCase()}</h3>
+    <span>${lyrics[songIndex].lyrics.replace(/(\n)/g, '<br>')}</span>
+    `
+}
+*/
+
 
 
 function playSong() {
@@ -24,7 +53,6 @@ function pauseSong() {
     playBtn.innerHTML = '<i class="fas fa-play"></i>';
     audio.pause();
 }
-
 
 function restartSong() {
     audio.pause();
@@ -41,6 +69,28 @@ function stopSong() {
     lyricsBtn.style.color = '#ff4371';
     lyricsBtn.style.borderColor = '#ff4371';
 }
+
+/*
+
+// previous and next songs
+function prevSong() {
+    songIndex--;
+    if (songIndex < 0) {
+        songIndex = songs.length - 1;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+function nextSong() {
+    songIndex++;
+    if (songIndex > songs.length - 1) {
+        songIndex = 0;
+    }
+    loadSong(songs[songIndex]);
+    playSong();
+}
+
+*/
 
 // Update progress bar
 function updateProgress(e) {
