@@ -112,16 +112,24 @@ function updateProgress(e) {
 
     // Get minutes
     let mins = Math.floor(audio.currentTime / 60);
-    if (mins < 10) {
-        mins = String(mins);
-    }
+    let totalMins = Math.floor(audio.duration / 60);
+
+
     // Get seconds
     let secs = Math.floor(audio.currentTime % 60);
+    let totalSecs = 60 - Math.floor(audio.currentTime % 60);
+
+    if (totalSecs < 10) {
+        totalSecs = '0' + String(totalSecs);
+    } else if (totalSecs == 60) {
+        totalSecs = '00';
+        totalMins += 1;
+    }
     if (secs < 10) {
         secs = '0' + String(secs);
     }
     timestamp.innerText = `${mins}:${secs}`;
-
+    durationstamp.innerText = `-${(totalMins - mins) - 1}:${totalSecs}`;
 }
 
 // Set progress bar 
@@ -164,14 +172,12 @@ playBtn.addEventListener('click', () => {
 // This avoids audio duration to be NaN
 audio.addEventListener('loadedmetadata', () => {
     let mins = Math.floor(audio.duration / 60);
-    if (mins < 10) {
-        mins = String(mins);
-    }
+
     let secs = Math.floor(audio.duration % 60);
     if (secs < 10) {
         secs = '0' + String(secs);
     }
-    durationstamp.innerText = `${mins}:${secs}`;
+    durationstamp.innerText = `-${mins}:${secs}`;
 
 });
 
